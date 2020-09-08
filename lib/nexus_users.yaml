@@ -1,0 +1,30 @@
+---
+# "If a user is a member of a LDAP group that matches the ID of a role, the repository manager grants that user the matching role."
+#   From: https://help.sonatype.com/repomanager3/system-configuration/user-authentication/ldap#LDAP-UserandGroupMapping
+roles:
+  # Default roles provided by Nexus
+  nx-admin:
+    -
+  nx-anonymous:
+    -
+
+  # Modify these example roles however you like
+  nx-deployment:
+    - nx-repository-view-*-*-*
+    - nx-search-read
+  tag-management:
+    - nx-tags-all
+
+users:
+  # Modify these example users however you like
+  -
+    name: ci
+    email: ci@domain.com
+    roles:
+      - nx-deployment
+      - tag-management
+  -
+    name: tag-manager
+    email: tm@domain.com
+    roles:
+      - tag-management

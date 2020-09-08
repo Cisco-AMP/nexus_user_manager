@@ -1,0 +1,21 @@
+--- 
+roles:
+  test_role_a:
+    - priv_1
+  test_role_b:
+    - priv_2
+  test_role_c:
+    - priv_3
+    - priv_4
+users:
+  -
+    email: test_user1@domain.com
+    name: test_user1
+    roles:
+      - test_role_a
+      - test_role_b
+  -
+    email: test_user2@domain.com
+    name: test_user2
+    roles:
+      - test_role_c

@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require 'optparse'
+
+$LOAD_PATH.unshift(File.join(__dir__, '../lib'))
+require 'nexus_user_manager'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = 'Usage: nexus_user_manager [options]'
+
+  opts.on('-h', '--help', 'Prints this help') do
+    puts opts
+    exit
+  end
+
+  opts.on('-v', '--verbose', 'Run verbosely') do
+    options[:verbose] = true
+  end
+end.parse!
+
+manager = NexusUserManager::Manager.new
+manager.create_required_roles
+manager.create_required_users
+puts 'Script execution complete.'
